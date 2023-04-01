@@ -1,9 +1,9 @@
 var RicohThetaWidget = {
   _sameHost : function (url) {
-    if (url.match(/https?.+theta360.com/)) {return true;}
+    if (url.match(/https?.+cdn.jsdelivr.net/)) {return true;}
   },
   isQueryTargetUrl : function(url) {
-    return !url.match(/^https?:\/\/theta360.com/);
+    return !url.match(/^https?:\/\/cdn.jsdelivr.net/);
   },
   getQueryTargetUrl : function(url) {
     var parameters = url.split('?')[1].split('&');
@@ -141,7 +141,7 @@ var RicohThetaWidget = {
   var is_allowed_url = parsed_location[0].match(/^https:$/) && parsed_location[2].match(/amazon\.(co\.jp|net|com|jp)$/);
   if (is_allowed_url) {
     window.addEventListener("message", function (event) {
-      var is_safety = event.origin == "https://theta360.com" && event.data == "Ready";
+      var is_safety = event.origin == "https://cdn.jsdelivr.net" && event.data == "Ready";
       if (!is_safety) { return; }
 
       var target_iframes = document.querySelectorAll('div.advertisement iframe.ricoh-theta-iframe');
